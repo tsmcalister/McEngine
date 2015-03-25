@@ -15,10 +15,10 @@ import javax.swing.Timer;
 
 public class McEngine extends JPanel implements ActionListener, KeyEventDispatcher{
 
-	static int screenWidth = 200;
-	static int screenHeight = 200;
+	static int screenWidth = 300;
+	static int screenHeight = 300;
 	static String screenText = "McEngine";
-	public Camera mainCam = new Camera(0,0,2,new Vector(0,0,1),new Vector(0,1,0),Math.PI/2,screenWidth,screenHeight);
+	public Camera mainCam = new Camera(0,0,10,new Vector(0,0,1),new Vector(0,1,0),Math.PI/2,screenWidth,screenHeight);
 	public Light mainLight = new Light(0,0,0,new Vector(0,0,1).rotate(0, 0, 0),new Vector(0,0,1).rotate(0, 0, 0),Math.PI/2,screenWidth,screenHeight);
 	Color bgColor = Color.black; 
 	R3 world = new R3();
@@ -195,7 +195,7 @@ public class McEngine extends JPanel implements ActionListener, KeyEventDispatch
 		JFrame frame = new JFrame(screenText);
 		frame.add(new McEngine());
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(screenWidth, screenHeight);
+		frame.setSize(screenWidth, screenHeight+22);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 	}
@@ -204,8 +204,8 @@ public class McEngine extends JPanel implements ActionListener, KeyEventDispatch
 	public void actionPerformed(ActionEvent e) {
 		updateBuffer();
 		
-    	mainCam.pos.x = Math.cos(alpha-Math.PI/2)*12;
-    	mainCam.pos.y = Math.sin(alpha-Math.PI/2)*12+10;
+    	mainCam.pos.x = Math.cos(alpha-Math.PI/2)*20;
+    	mainCam.pos.y = Math.sin(alpha-Math.PI/2)*20+10;
     	mainCam.dir = ((new Vector(0,10,0)).add(mainCam.pos.mult(-1))).normalize();
     	mainCam.normal = mainCam.normal.rotate(0, 0, 0.05);
     	alpha+=0.1;
